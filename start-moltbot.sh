@@ -213,7 +213,7 @@ if (process.env.SLACK_BOT_TOKEN && process.env.SLACK_APP_TOKEN) {
 //   https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/anthropic
 //   https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/openai
 const baseUrl = process.env.AI_GATEWAY_BASE_URL || process.env.ANTHROPIC_BASE_URL || '';
-const isOpenAI = baseUrl.endsWith('/openai');
+const isOpenAI = baseUrl.endsWith('/openai') || baseUrl.includes('gateway.ai.cloudflare.com') || baseUrl.includes('openai.com');
 
 if (isOpenAI) {
     // Create custom openai provider config with baseUrl override

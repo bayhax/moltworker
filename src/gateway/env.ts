@@ -9,7 +9,7 @@ import type { MoltbotEnv } from '../types';
 export function buildEnvVars(env: MoltbotEnv): Record<string, string> {
   const envVars: Record<string, string> = {};
 
-  const isOpenAIGateway = env.AI_GATEWAY_BASE_URL?.endsWith('/openai');
+  const isOpenAIGateway = env.AI_GATEWAY_BASE_URL?.endsWith('/openai') || normalizedBaseUrl?.includes('gateway.ai.cloudflare.com') || normalizedBaseUrl?.includes('openai.com');
 
   // AI Gateway vars take precedence
   // Map to the appropriate provider env var based on the gateway endpoint
